@@ -1,3 +1,5 @@
-<p>
-  upload works!
-</p>
+<h1>Upload</h1>
+<input id="cin" name="cin" type="file" (change)="fileChangeEvent($event)" placeholder="Upload a file..." multiple/>
+<button type="button" class="btn btn-success btn-s" (click)="upload()">
+    <i class="glyphicon glyphicon-open-file"></i>&nbsp;Upload
+</button>

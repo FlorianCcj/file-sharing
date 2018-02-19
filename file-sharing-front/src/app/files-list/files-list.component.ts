@@ -12,7 +12,7 @@ export class FilesListComponent implements OnInit {
 
   filesList: Observable<any>;
   
-  constructor(private filesService: FilesService) { }
+  constructor(private filesService: FilesService) { this.getFiles();}
 
   ngOnInit() {
     this.getFiles();

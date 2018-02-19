@@ -1,3 +1,6 @@
-<p>
-  files-list works!
-</p>
+<h1 (load)="getFiles()">Files list</h1>
+
+<ul *ngIf="(filesList | async)?.length; else noFile">
+  <li *ngFor="let file of (filesList | async)"> {{file | json}}</li>
+</ul>
+<ng-template #noFile>No file have been upload on server</ng-template>
