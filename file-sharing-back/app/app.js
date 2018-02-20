@@ -13,6 +13,7 @@ app.use(express.static(path.join(__dirname, 'uploads')));
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
   next();
 });
 
@@ -27,6 +28,10 @@ var storage = multer.diskStorage({
 });
 
 var upload = multer({ storage: storage });
+
+app.options('/api/upload', function(req, res) {
+  res.send();
+});
 
 app.get('/api/files', function(req, res) {
   fs.readdir('./uploads', function(err, files) {
@@ -44,6 +49,16 @@ app.get('/api/files', function(req, res) {
 
 app.post("/api/upload", upload.array("uploads[]", 12), function (req, res) {
   res.send(req.files);
+});
+
+app.options('/api/file/:filename', function(req, res) {
+  res.send();
+});
+
+app.delete('/api/file/:filename', function(req, res) {
+  // todo: here there is a deprecated to understand !!!!
+  fs.unlink(process.cwd() + '/uploads/' + req.params.filename);
+  res.send({});
 });
 
 var server = app.listen(port, function () {

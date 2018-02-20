@@ -16,4 +16,8 @@ export class FilesService {
   postFiles(formData) {
     return this.http.post(`${this.mainUrl}/upload/`, formData);
   }
+
+  deleteData(file) {
+    return this.http.delete(`${this.mainUrl}/file/${file}`)
+  }
 }
