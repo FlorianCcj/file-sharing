@@ -30,6 +30,7 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 app.get('/api/files', function(req, res) {
+  console.log('[GET] - ' + '/api/files');
   fs.readdir('./uploads', function(err, files) {
     let currentFiles = [];
     files.forEach(function(file) {
@@ -44,22 +45,29 @@ app.get('/api/files', function(req, res) {
 });
 
 app.get('/api/file/:filename', function(req, res) {
+  console.log('[GET] - ' + '/api/file/:filename');
+  console.log(req.params.filename);
   res.sendFile(process.cwd() + '/uploads/' + req.params.filename);
 });
 
 app.options('/api/upload', function(req, res) {
+  console.log('[OPTIONS] - ' + '/api/upload');
   res.send();
 });
 
-app.post("/api/upload", upload.array("uploads[]", 12), function (req, res) {
+app.post('/api/upload', upload.array("uploads[]", 12), function (req, res) {
+  console.log('[POST] - ' + '/api/upload');
   res.send(req.files);
 });
 
 app.options('/api/file/:filename', function(req, res) {
+  console.log('[OPTIONS] - ' + '/api/file/:filename');
   res.send();
 });
 
 app.delete('/api/file/:filename', function(req, res) {
+  console.log('[DELETE] - ' + '/api/file/:filename');
+  console.log(req.params.filename);
   // todo: here there is a deprecated to understand !!!!
   fs.unlink(process.cwd() + '/uploads/' + req.params.filename);
   res.send({});

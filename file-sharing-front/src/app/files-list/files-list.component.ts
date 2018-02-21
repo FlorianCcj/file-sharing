@@ -24,7 +24,6 @@ export class FilesListComponent implements OnInit {
   }
 
   deleteFile(file) {
-    // console.log(file);
     this.filesService.deleteData(file.id).subscribe(
       () => this.getFiles()
     );

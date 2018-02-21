@@ -1,10 +1,26 @@
-<h1 (load)="getFiles()">Files list</h1>
-
-<table *ngIf="(filesList | async)?.files?.length > 0; else noFile">
-  <tr *ngFor="let file of (filesList | async)?.files">
-    <td>{{file | json}}</td>
-    <td><a class="btn btn-success" [href]="mainUrl+'/file/'+file.id" role="button" dowload><i class="fa fa-save"></i></a></td>
-    <td><a class="btn btn-warning" (click)="deleteFile(file)"><i class="fa fa-trash"></i></a></td>
+<div class="page-header">
+  <app-upload (onDrop)="getFiles()"></app-upload>
+</div>
+<h1>Files list</h1>
+<div class="table-responsive">
+<table class="table table-striped table-sm" *ngIf="(filesList | async)?.files?.length > 0; else noFile">
+<thead class="thead-dark">
+  <tr>
+    <th scope="col">File</th>
+    <th scope="col" class="col-md-2">Size</th>
+    <th scope="col" class="col-md-2">Action</th>
   </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let file of (filesList | async)?.files">
+    <td>{{file.id}}</td>
+    <td class="col-md-2"><span class="badge text-right">{{file.size}}</span></td>
+    <td class="col-md-2">
+      <a class="btn btn-success" [href]="mainUrl+'/file/'+file.id" role="button" dowload><i class="fa fa-save"></i></a>
+      <a class="btn btn-warning" (click)="deleteFile(file)"><i class="fa fa-trash"></i></a>
+    </td>
+  </tr>
+</tbody>
 </table>
+</div>
 <ng-template #noFile>No file have been upload on server</ng-template>
