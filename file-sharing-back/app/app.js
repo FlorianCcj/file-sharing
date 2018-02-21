@@ -55,7 +55,8 @@ app.get('/api/files', function(req, res) {
       currentFiles.push({
         id: file,
         size: bytes(fs.statSync('./uploads/' + file).size)
-          .replace(/([a-z])B/, '$1iB')
+          .replace(/([a-z])B/, '$1iB'),
+        ctime: fs.statSync('./uploads/' + file).ctime
       });
     });
     res.send({ files: currentFiles });
