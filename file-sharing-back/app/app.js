@@ -12,7 +12,7 @@ app.use(express.static(path.join(__dirname, 'uploads')));
 // headers and content type
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, cache-control");
   res.header('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
   next();
 });
@@ -28,10 +28,6 @@ var storage = multer.diskStorage({
 });
 
 var upload = multer({ storage: storage });
-
-app.options('/api/upload', function(req, res) {
-  res.send();
-});
 
 app.get('/api/files', function(req, res) {
   fs.readdir('./uploads', function(err, files) {
@@ -49,6 +45,10 @@ app.get('/api/files', function(req, res) {
 
 app.get('/api/file/:filename', function(req, res) {
   res.sendFile(process.cwd() + '/uploads/' + req.params.filename);
+});
+
+app.options('/api/upload', function(req, res) {
+  res.send();
 });
 
 app.post("/api/upload", upload.array("uploads[]", 12), function (req, res) {
