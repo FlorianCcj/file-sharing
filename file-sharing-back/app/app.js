@@ -24,8 +24,12 @@ var storage = multer.diskStorage({
   },
   filename: function(req, file, cb) {
     var now = formatDate(new Date());
-    var [name, extension] = file.originalname.split('.');
-    cb(null, name + '_' + now + '.' + extension);
+    // var [name, extension] = file.originalname.split('.');
+    name = file.originalname;
+    lastDot = name.lastIndexOf('.');
+    newName = name.substring(0, lastDot) + '_' + now + '.' + name.substring(lastDot+1);
+
+    cb(null, newName);
   }
 });
 
