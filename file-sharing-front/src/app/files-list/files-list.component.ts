@@ -11,6 +11,7 @@ import {FilesService} from '../files.service';
 export class FilesListComponent implements OnInit {
 
   filesList: Observable<any>;
+  mainUrl = this.filesService.mainUrl;
   
   constructor(private filesService: FilesService) {}
 

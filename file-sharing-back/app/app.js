@@ -47,6 +47,10 @@ app.get('/api/files', function(req, res) {
   });
 });
 
+app.get('/api/file/:filename', function(req, res) {
+  res.sendFile(process.cwd() + '/uploads/' + req.params.filename);
+});
+
 app.post("/api/upload", upload.array("uploads[]", 12), function (req, res) {
   res.send(req.files);
 });

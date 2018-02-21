@@ -3,7 +3,8 @@
 <ul *ngIf="(filesList | async)?.files?.length > 0; else noFile">
   <li *ngFor="let file of (filesList | async)?.files">
     {{file | json}}
-    <button (click)="deleteFile(file)"><i class="fa fa-trash"></i></button>
+    <a class="btn btn-primary" [href]="mainUrl+'/file/'+file.id" role="button" dowload><i class="fa fa-user"></i></a>
+    <a class="btn btn-primary" (click)="deleteFile(file)"><i class="fa fa-trash"></i></a>
   </li>
 </ul>
 <ng-template #noFile>No file have been upload on server</ng-template>
