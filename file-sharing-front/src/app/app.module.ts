@@ -11,6 +11,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { FilesListComponent } from './files-list/files-list.component';
 import { UploadComponent } from './upload/upload.component';
+import {SearchPipe} from './search.pipe';
 
 const appRoutes: Routes = [
   { path: 'files', component: FilesListComponent },
@@ -24,7 +25,8 @@ const appRoutes: Routes = [
     NavbarComponent,
     HomeComponent,
     FilesListComponent,
-    UploadComponent
+    UploadComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,

@@ -20,4 +20,14 @@ export class FilesService {
   deleteData(file) {
     return this.http.delete(`${this.mainUrl}/file/${file}`)
   }
+
+  filterListOfFile(entityList, pattern) {
+    if (typeof(pattern) === typeof('')) {
+      return entityList.filter((entity) => {
+        return entity.id.toLowerCase().indexOf(pattern.toLowerCase()) !== -1;
+      });
+    } else {
+      return entityList;
+    }
+  }
 }
