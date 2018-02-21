@@ -22,10 +22,28 @@ var storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, './uploads/')
   },
-  filename: function (req, file, cb) {
-    cb(null, file.originalname);
+  filename: function(req, file, cb) {
+    var now = formatDate(new Date());
+    var [name, extension] = file.originalname.split('.');
+    cb(null, name + '_' + now + '.' + extension);
   }
 });
+
+var formatDate = function(date) {
+  var month = date.getMonth();
+  month = (month.length == 2) ? month : '0' + month;
+  var day = '' + date.getDay();
+  day = (day.length == 2) ? day : '0' + day;
+  var hours = '' + date.getHours();
+  hours = (hours.length == 2) ? hours : '0' + hours;
+  var minutes = '' + date.getMinutes();
+  minutes = (minutes.length == 2) ? minutes : '0' + minutes;
+  var seconds = '' + date.getSeconds();
+  seconds = (seconds.length == 2) ? seconds : '0' + seconds;
+
+  return date.getFullYear() + '-' + month + '-' + day + '_' +
+    hours + ':' + minutes + ':' + seconds;
+};
 
 var upload = multer({ storage: storage });
 

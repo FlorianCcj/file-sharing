@@ -3,7 +3,7 @@
 </div>
 <h1>Files list</h1>
 <div class="table-responsive">
-  <input type="text" placeholder="recherche" 
+  <input type="text" placeholder="research" 
     [ngModelOptions]="{standalone: true}"
     [ngModel]="searchValue"
     (ngModelChange)="search($event)"  
@@ -34,7 +34,7 @@
         [ngModelOptions]="{standalone: true}"
         [ngModel]="numberOfDataPerPage"
         (ngModelChange)="setNumberOfDataPerPage($event)"
-        />
+        /> file(s)/page
       </form>
     </span>
     <span class="col-md-5">
