@@ -24,7 +24,6 @@ var storage = multer.diskStorage({
   },
   filename: function(req, file, cb) {
     var now = formatDate(new Date());
-    // var [name, extension] = file.originalname.split('.');
     name = file.originalname;
     lastDot = name.lastIndexOf('.');
     newName = name.substring(0, lastDot) + '_' + now + '.' + name.substring(lastDot+1);
@@ -35,8 +34,8 @@ var storage = multer.diskStorage({
 
 var formatDate = function(date) {
   var month = date.getMonth();
-  month = (month.length == 2) ? month : '0' + month;
-  var day = '' + date.getDay();
+  month = ((+month+1).length == 2) ? (+month+1) : '0' + (+month+1);
+  var day = '' + date.getDate();
   day = (day.length == 2) ? day : '0' + day;
   var hours = '' + date.getHours();
   hours = (hours.length == 2) ? hours : '0' + hours;
@@ -92,7 +91,7 @@ app.delete('/api/file/:filename', function(req, res) {
   console.log('[DELETE] - ' + '/api/file/:filename');
   console.log(req.params.filename);
   // todo: here there is a deprecated to understand !!!!
-  fs.unlink(process.cwd() + '/uploads/' + req.params.filename);
+  fs.unlink(process.cwd() + '/uploads/' + req.params.filename, () => {});
   res.send({});
 });
 
