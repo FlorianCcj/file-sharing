@@ -38,7 +38,7 @@ export class UploadComponent implements OnInit {
       formData.append("uploads[]", files[i], files[i]['name']);
     }
     this.filesService.postFiles(formData)
-      .subscribe(files => this.onDrop.emit());
+      .subscribe(files => this.onDrop.emit(),files => this.onDrop.emit());
   }
 }
 

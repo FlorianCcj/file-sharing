@@ -124,12 +124,6 @@
   dependencies:
     tslib "^1.7.1"
 
-"@angular/flex-layout@^2.0.0-beta.12":
-  version "2.0.0-beta.12"
-  resolved "https://registry.yarnpkg.com/@angular/flex-layout/-/flex-layout-2.0.0-beta.12.tgz#80970dc1d60f27fa41537659926f3238f759f343"
-  dependencies:
-    tslib "^1.7.1"
-
 "@angular/forms@^5.2.0":
   version "5.2.5"
   resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-5.2.5.tgz#2ad7a420c6ef6cd87a34071c5319ec83f7ed56aa"
@@ -814,9 +808,9 @@ boom@5.x.x:
   dependencies:
     hoek "4.x.x"
 
-bootstrap@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.0.0.tgz#ceb03842c145fcc1b9b4e15da2a05656ba68469a"
+bootstrap@3.*.*:
+  version "3.3.7"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-3.3.7.tgz#5a389394549f23330875a3b150656574f8a9eb71"
 
 brace-expansion@^1.1.7:
   version "1.1.11"
@@ -2035,10 +2029,6 @@ domutils@1.5.1:
 double-ended-queue@^2.1.0-0:
   version "2.1.0-0"
   resolved "https://registry.yarnpkg.com/double-ended-queue/-/double-ended-queue-2.1.0-0.tgz#103d3527fd31528f40188130c841efdd78264e5c"
-
-dropzone@^5.3.0:
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/dropzone/-/dropzone-5.3.0.tgz#41c7a8a7cc6d237e3b28664e7a0719660d067edc"
 
 duplexer2@^0.1.2, duplexer2@~0.1.0, duplexer2@~0.1.2:
   version "0.1.4"
@@ -4500,12 +4490,6 @@ negotiator@0.6.1:
 netmask@~1.0.4:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/netmask/-/netmask-1.0.6.tgz#20297e89d86f6f6400f250d9f4f6b4c1945fcd35"
-
-ngx-dropzone-wrapper@^5.3.3:
-  version "5.3.3"
-  resolved "https://registry.yarnpkg.com/ngx-dropzone-wrapper/-/ngx-dropzone-wrapper-5.3.3.tgz#baf4dbd64fcfbf3183cbe235f7b2a131b6f085eb"
-  dependencies:
-    dropzone "^5.3.0"
 
 no-case@^2.2.0:
   version "2.3.2"

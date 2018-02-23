@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import {HttpClient} from '@angular/common/http';
+import {environment} from '../environments/environment'
 
 @Injectable()
 export class FilesService {
 
-  mainUrl: string = 'http://localhost:3003/api'
+  mainUrl: string = environment.backendUrl;
 
   constructor(private http: HttpClient) {}
 
