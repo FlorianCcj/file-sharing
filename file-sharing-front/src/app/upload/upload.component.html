@@ -10,7 +10,8 @@
     (dragend)="false"
     (drop)="handleDrop($event)"
   >
-    <div>dropzone</div>
+    <div *ngIf="!loading; else loader">dropzone</div>
     <input type="file" />
   </div>
 </div>
+<ng-template #loader>Uploading...</ng-template>

@@ -11,6 +11,8 @@ export class UploadComponent implements OnInit {
   // filesToUpload: File[] = [];
   @Output() onDrop = new EventEmitter<any>();
 
+  loading = false;
+
   constructor(private filesService: FilesService) {}
 
   ngOnInit() {}
@@ -30,6 +32,7 @@ export class UploadComponent implements OnInit {
   } */
 
   handleDrop(e) {
+    this.loading = true;
     e.preventDefault(); // évite d'ouvrir le fichier recherché
     const files: File[] = e.dataTransfer.files;
     const formData: any = new FormData();
@@ -38,7 +41,11 @@ export class UploadComponent implements OnInit {
       formData.append("uploads[]", files[i], files[i]['name']);
     }
     this.filesService.postFiles(formData)
-      .subscribe(files => this.onDrop.emit(),files => this.onDrop.emit());
+      .subscribe(files => this.endDrop(),files => this.endDrop());
+  }
+  endDrop() {
+    this.onDrop.emit();
+    this.loading = false;
   }
 }
 
